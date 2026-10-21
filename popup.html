@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Campus Wi-Fi Auto Login</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        font-family: system-ui, sans-serif;
+      }
+
+      body {
+        box-sizing: border-box;
+        margin: 0;
+        min-width: 320px;
+        padding: 16px;
+      }
+
+      h1 {
+        font-size: 18px;
+        margin: 0 0 16px;
+      }
+
+      label {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        margin-top: 12px;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        box-sizing: border-box;
+        margin-top: 5px;
+        padding: 8px;
+        width: 100%;
+      }
+
+      .option {
+        align-items: center;
+        display: flex;
+        font-weight: 400;
+        gap: 8px;
+      }
+
+      button {
+        cursor: pointer;
+        margin-top: 16px;
+        padding: 8px 12px;
+        width: 100%;
+      }
+
+      #status {
+        font-size: 12px;
+        min-height: 18px;
+        margin: 10px 0 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Campus Wi-Fi Login</h1>
+    <form id="credentials-form">
+      <label for="matric">Matric No</label>
+      <input id="matric" name="matric" type="text" autocomplete="username" required>
+
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" autocomplete="current-password" required>
+
+      <label class="option" for="auto-login">
+        <input id="auto-login" name="autoLogin" type="checkbox" checked>
+        Log in automatically
+      </label>
+
+      <button type="submit">Save credentials</button>
+      <p id="status" role="status" aria-live="polite"></p>
+    </form>
+    <script src="popup.js"></script>
+  </body>
+</html>

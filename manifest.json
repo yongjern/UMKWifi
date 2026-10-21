@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Campus Wi-Fi Auto Login",
+  "version": "1.0.0",
+  "description": "Automatically fills and submits supported campus Wi-Fi captive portals.",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "http://1.1.1.2/webAuth/*",
+    "*://*/webAuth/*"
+  ],
+  "action": {
+    "default_title": "Campus Wi-Fi Auto Login",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://1.1.1.2/webAuth/*",
+        "*://*/webAuth/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
