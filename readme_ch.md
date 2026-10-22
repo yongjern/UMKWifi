@@ -19,16 +19,29 @@ UMKWifi 是一个基于 Manifest V3 的 Chrome 扩展，可在打开受支持的
 http://1.1.1.2/homepage/login.html
 ```
 
-## 安装方法
+## 从 GitHub Release 安装
 
-1. 下载或保留完整的项目文件夹。
-2. 在 Chrome 地址栏打开 `chrome://extensions`。
-3. 打开右上角的 **开发者模式（Developer mode）**。
+1. 打开本项目在 GitHub 上的 **Releases** 页面。
+2. 打开最新版本，并在 **Assets** 区域下载 ZIP 文件。
+3. 将下载的 ZIP 文件解压到一个固定文件夹。不要直接在 ZIP 压缩包内运行扩展。
+4. 打开浏览器的扩展管理页面：
+   - Chrome：`chrome://extensions`
+   - Microsoft Edge：`edge://extensions`
+5. 开启 **开发者模式（Developer mode）**。
+6. 点击 **加载已解压的扩展程序（Load unpacked）**。
+7. 选择解压后直接包含 `manifest.json` 的文件夹。
+8. 安装完成后，可从浏览器的扩展菜单固定 **UMKWifi**。
+
+> 不要选择 ZIP 文件、ZIP 的上层文件夹或单独的 `icons` 文件夹。请选择打开后可直接看到 `manifest.json` 的解压文件夹。
+
+## 从源代码安装
+
+1. 下载源代码或克隆项目仓库。
+2. 在 Chrome 打开 `chrome://extensions`，或在 Microsoft Edge 打开 `edge://extensions`。
+3. 开启 **开发者模式（Developer mode）**。
 4. 点击 **加载已解压的扩展程序（Load unpacked）**。
-5. 选择本项目文件夹 `umkwifi-local`。
-6. 安装完成后，可在 Chrome 扩展菜单中固定 **UMKWifi**。
-
-> 不要只选择 `icons` 文件夹；需要选择包含 `manifest.json` 的项目根目录。
+5. 选择包含 `manifest.json` 的项目根目录。
+6. 安装完成后，可从浏览器的扩展菜单固定 **UMKWifi**。
 
 ## 使用方法
 

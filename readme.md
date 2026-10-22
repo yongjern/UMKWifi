@@ -19,16 +19,29 @@ For example:
 http://1.1.1.2/homepage/login.html
 ```
 
-## Installation
+## Installing from a GitHub Release
 
-1. Download or keep the complete project folder.
-2. Open `chrome://extensions` in Chrome.
-3. Enable **Developer mode** in the upper-right corner.
+1. Open the project's **Releases** page on GitHub.
+2. Open the latest release and download its ZIP file from the **Assets** section.
+3. Extract the downloaded ZIP file to a permanent folder. Do not run the extension directly from inside the ZIP archive.
+4. Open your browser's extension management page:
+   - Chrome: `chrome://extensions`
+   - Microsoft Edge: `edge://extensions`
+5. Enable **Developer mode**.
+6. Click **Load unpacked**.
+7. Select the extracted folder that directly contains `manifest.json`.
+8. After installation, pin **UMKWifi** from the browser's Extensions menu.
+
+> Do not select the ZIP file, its parent folder, or only the `icons` folder. Select the extracted folder in which `manifest.json` is visible.
+
+## Installing from Source Code
+
+1. Download the source code or clone the repository.
+2. Open `chrome://extensions` in Chrome or `edge://extensions` in Microsoft Edge.
+3. Enable **Developer mode**.
 4. Click **Load unpacked**.
-5. Select the `umkwifi-local` project folder.
-6. After installation, you can pin **UMKWifi** from Chrome's Extensions menu.
-
-> Do not select only the `icons` folder. Select the project root containing `manifest.json`.
+5. Select the project root folder containing `manifest.json`.
+6. After installation, pin **UMKWifi** from the browser's Extensions menu.
 
 ## Usage
 
