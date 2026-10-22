@@ -14,7 +14,9 @@
     "http://1.1.1.2/webAuth/*",
     "*://*/webAuth/*",
     "http://1.1.1.2/ac_portal/*",
-    "*://*/ac_portal/*"
+    "*://*/ac_portal/*",
+    "http://1.1.1.2/homepage/*",
+    "*://*/homepage/*"
   ],
   "action": {
     "default_title": "Campus Wi-Fi Auto Login",
@@ -26,7 +28,9 @@
         "http://1.1.1.2/webAuth/*",
         "*://*/webAuth/*",
         "http://1.1.1.2/ac_portal/*",
-        "*://*/ac_portal/*"
+        "*://*/ac_portal/*",
+        "http://1.1.1.2/homepage/*",
+        "*://*/homepage/*"
       ],
       "js": [
         "content.js"

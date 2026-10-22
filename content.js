@@ -72,6 +72,20 @@
       };
     }
 
+    const homepageMatricField = document.querySelector("#username");
+    const homepagePasswordField = document.querySelector("#pwd");
+    const homepageSubmitControl = document.querySelector(".to-login");
+
+    if (homepageMatricField && homepagePasswordField && homepageSubmitControl) {
+      return {
+        matricField: homepageMatricField,
+        passwordField: homepagePasswordField,
+        submitControl: homepageSubmitControl,
+        form: homepageMatricField.form || homepagePasswordField.form,
+        prepare() {}
+      };
+    }
+
     return null;
   }
 
