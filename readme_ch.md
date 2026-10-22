@@ -12,11 +12,13 @@ UMKWifi 是一个基于 Manifest V3 的 Chrome 扩展，可在打开受支持的
 - `*://*/ac_portal/*`
 - `http://1.1.1.2/homepage/*`
 - `*://*/homepage/*`
+- `http://10.255.255.1/index.html*`（包含 `:8080` 等端口）
 
 例如：
 
 ```text
 http://1.1.1.2/homepage/login.html
+http://10.255.255.1:8080/index.html
 ```
 
 ## 从 GitHub Release 安装
@@ -103,7 +105,7 @@ umkwifi-local/
 
 1. 是否已在扩展弹窗中保存账号和密码。
 2. 是否勾选自动登录选项。
-3. 当前网址是否属于支持的 `/webAuth/`、`/ac_portal/` 或 `/homepage/` 路径。
+3. 当前网址是否属于支持的 `/webAuth/`、`/ac_portal/`、`/homepage/` 路径，或 `10.255.255.1` 的 `index.html` 登录页。
 4. 是否在修改文件后重新加载扩展。
 5. 登录页面是否已经更改字段或按钮结构。
 

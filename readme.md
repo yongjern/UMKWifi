@@ -12,11 +12,13 @@ The extension currently supports the following paths:
 - `*://*/ac_portal/*`
 - `http://1.1.1.2/homepage/*`
 - `*://*/homepage/*`
+- `http://10.255.255.1/index.html*` (including URLs with ports such as `:8080`)
 
 For example:
 
 ```text
 http://1.1.1.2/homepage/login.html
+http://10.255.255.1:8080/index.html
 ```
 
 ## Installing from a GitHub Release
@@ -103,7 +105,7 @@ Check the following:
 
 1. Your account and password have been saved in the extension popup.
 2. The automatic login option is enabled.
-3. The current URL uses a supported `/webAuth/`, `/ac_portal/`, or `/homepage/` path.
+3. The current URL uses a supported `/webAuth/`, `/ac_portal/`, or `/homepage/` path, or the `index.html` login page on `10.255.255.1`.
 4. The extension was reloaded after its files were modified.
 5. The login portal has not changed its input fields or login button structure.
 

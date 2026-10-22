@@ -23,6 +23,10 @@
     return value.replace(/ /g, "%20");
   }
 
+  function isVisible(element) {
+    return element.getClientRects().length > 0;
+  }
+
   function findSubmitControl(form) {
     const onApplyControl = document.querySelector(
       "button[onclick*='onApply'], input[onclick*='onApply'], a[onclick*='onApply']"
@@ -86,6 +90,31 @@
       };
     }
 
+    const legacyForm = document.querySelector("#LoginForm");
+    const legacyPortalMatricField = legacyForm?.querySelector("input[name='username']");
+    const legacyPortalPasswordField = legacyForm?.querySelector("input[name='password']");
+
+    if (legacyPortalMatricField && legacyPortalPasswordField) {
+      const submitControl = ["#sub1", "#sub2"]
+        .map((selector) => legacyForm.querySelector(selector))
+        .find((control) => control && !control.disabled && isVisible(control));
+
+      return {
+        matricField: legacyPortalMatricField,
+        passwordField: legacyPortalPasswordField,
+        submitControl: submitControl || null,
+        form: legacyForm,
+        allowFormSubmit: true,
+        canSubmitForm() {
+          return !["#CustomTr", "#intro"].some((selector) => {
+            const consentSection = legacyForm.querySelector(selector);
+            return consentSection && isVisible(consentSection);
+          });
+        },
+        prepare() {}
+      };
+    }
+
     return null;
   }
 
@@ -111,9 +140,13 @@
 
     if (portal.submitControl) {
       portal.submitControl.click();
-    } else if (portal.form) {
+    } else if (
+      portal.form
+      && portal.allowFormSubmit !== false
+      && (!portal.canSubmitForm || portal.canSubmitForm())
+    ) {
       portal.form.requestSubmit();
-    } else {
+    } else if (portal.allowFormSubmit !== false) {
       console.warn("Campus Wi-Fi Auto Login: no login form or submit control found.");
     }
 
