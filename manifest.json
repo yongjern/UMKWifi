@@ -8,7 +8,9 @@
   ],
   "host_permissions": [
     "http://1.1.1.2/webAuth/*",
-    "*://*/webAuth/*"
+    "*://*/webAuth/*",
+    "http://1.1.1.2/ac_portal/*",
+    "*://*/ac_portal/*"
   ],
   "action": {
     "default_title": "Campus Wi-Fi Auto Login",
@@ -18,7 +20,9 @@
     {
       "matches": [
         "http://1.1.1.2/webAuth/*",
-        "*://*/webAuth/*"
+        "*://*/webAuth/*",
+        "http://1.1.1.2/ac_portal/*",
+        "*://*/ac_portal/*"
       ],
       "js": [
         "content.js"

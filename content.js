@@ -35,16 +35,56 @@
     );
   }
 
+  function findPortalElements() {
+    const legacyMatricField = document.querySelector("#une");
+    const legacyPasswordField = document.querySelector("#passwd");
+
+    if (legacyMatricField && legacyPasswordField) {
+      const form = legacyMatricField.form || legacyPasswordField.form || document.querySelector("form");
+      return {
+        matricField: legacyMatricField,
+        passwordField: legacyPasswordField,
+        submitControl: findSubmitControl(form),
+        form,
+        prepare(matric, password) {
+          const usernameField = document.querySelector("#username");
+          const processedPasswordField = document.querySelector("#pwd");
+
+          if (usernameField) {
+            setFieldValue(usernameField, processPortalValue(matric));
+          }
+
+          if (processedPasswordField) {
+            setFieldValue(processedPasswordField, processPortalValue(password));
+          }
+        }
+      };
+    }
+
+    const acPortalMatricField = document.querySelector("#password_name");
+    const acPortalPasswordField = document.querySelector("#password_pwd");
+
+    if (acPortalMatricField && acPortalPasswordField) {
+      return {
+        matricField: acPortalMatricField,
+        passwordField: acPortalPasswordField,
+        submitControl: document.querySelector("#password_submitBtn"),
+        form: acPortalMatricField.form || acPortalPasswordField.form,
+        prepare() {}
+      };
+    }
+
+    return null;
+  }
+
   async function tryLogin() {
     const previousAttempt = Number(sessionStorage.getItem(LOGIN_ATTEMPT_KEY));
     if (Number.isFinite(previousAttempt) && Date.now() - previousAttempt < LOGIN_RETRY_DELAY_MS) {
       return true;
     }
 
-    const matricField = document.querySelector("#une");
-    const passwordField = document.querySelector("#passwd");
-
-    if (!matricField || !passwordField) {
+    const portal = findPortalElements();
+    if (!portal) {
       return false;
     }
 
@@ -58,29 +98,16 @@
       return true;
     }
 
-    setFieldValue(matricField, matric);
-    setFieldValue(passwordField, password);
-
-    const usernameField = document.querySelector("#username");
-    const processedPasswordField = document.querySelector("#pwd");
-
-    if (usernameField) {
-      setFieldValue(usernameField, processPortalValue(matric));
-    }
-
-    if (processedPasswordField) {
-      setFieldValue(processedPasswordField, processPortalValue(password));
-    }
-
-    const form = matricField.form || passwordField.form || document.querySelector("form");
-    const submitControl = findSubmitControl(form);
+    setFieldValue(portal.matricField, matric);
+    setFieldValue(portal.passwordField, password);
+    portal.prepare(matric, password);
 
     sessionStorage.setItem(LOGIN_ATTEMPT_KEY, String(Date.now()));
 
-    if (submitControl) {
-      submitControl.click();
-    } else if (form) {
-      form.requestSubmit();
+    if (portal.submitControl) {
+      portal.submitControl.click();
+    } else if (portal.form) {
+      portal.form.requestSubmit();
     } else {
       sessionStorage.removeItem(LOGIN_ATTEMPT_KEY);
       console.warn("Campus Wi-Fi Auto Login: no login form or submit control found.");
