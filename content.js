@@ -1,8 +1,6 @@
 (() => {
   "use strict";
 
-  const LOGIN_ATTEMPT_KEY = "campus-wifi-auto-login-attempted-at";
-  const LOGIN_RETRY_DELAY_MS = 30000;
   const FIELD_WAIT_TIMEOUT_MS = 15000;
 
   function setFieldValue(field, value) {
@@ -78,11 +76,6 @@
   }
 
   async function tryLogin() {
-    const previousAttempt = Number(sessionStorage.getItem(LOGIN_ATTEMPT_KEY));
-    if (Number.isFinite(previousAttempt) && Date.now() - previousAttempt < LOGIN_RETRY_DELAY_MS) {
-      return true;
-    }
-
     const portal = findPortalElements();
     if (!portal) {
       return false;
@@ -102,14 +95,11 @@
     setFieldValue(portal.passwordField, password);
     portal.prepare(matric, password);
 
-    sessionStorage.setItem(LOGIN_ATTEMPT_KEY, String(Date.now()));
-
     if (portal.submitControl) {
       portal.submitControl.click();
     } else if (portal.form) {
       portal.form.requestSubmit();
     } else {
-      sessionStorage.removeItem(LOGIN_ATTEMPT_KEY);
       console.warn("Campus Wi-Fi Auto Login: no login form or submit control found.");
     }
 

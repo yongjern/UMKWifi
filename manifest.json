@@ -1,7 +1,11 @@
 {
   "manifest_version": 3,
-  "name": "Campus Wi-Fi Auto Login",
+  "name": "UMKWifi",
   "version": "1.0.0",
+  "icons": 
+  {
+    "128": "icons/logo_128.png"
+  },
   "description": "Automatically fills and submits supported campus Wi-Fi captive portals.",
   "permissions": [
     "storage"

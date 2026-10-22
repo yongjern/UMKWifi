@@ -6,75 +6,239 @@
     <title>Campus Wi-Fi Auto Login</title>
     <style>
       :root {
-        color-scheme: light dark;
-        font-family: system-ui, sans-serif;
+        color: #eee9df;
+        font-family: Lora, Georgia, serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        background: #1a1d20;
+        margin: 0;
+        min-width: 360px;
       }
 
       body {
-        box-sizing: border-box;
-        margin: 0;
-        min-width: 320px;
-        padding: 16px;
+        padding: 8px;
+      }
+
+      .card {
+        background: #1a1d20;
+        border: 1px solid #34383c;
+        border-radius: 16px;
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
+        overflow: hidden;
+      }
+
+      .header {
+        align-items: center;
+        background:
+          linear-gradient(120deg, rgba(224, 0, 32, 0.22), transparent 55%),
+          #22262a;
+        border-bottom: 1px solid #3b3f43;
+        color: #fffaf2;
+        display: flex;
+        gap: 14px;
+        padding: 18px 20px 19px;
+        position: relative;
+      }
+
+      .brand-logo {
+        background: transparent;
+        border: 1px solid #fffaf2;
+        border-radius: 12px;
+        flex: 0 0 auto;
+        height: 58px;
+        object-fit: contain;
+        padding: 4px;
+        width: 58px;
+      }
+
+      .header-copy {
+        min-width: 0;
+      }
+
+      .header::after {
+        background: linear-gradient(90deg, #e00020 0 38%, #303888 38% 76%, #e88810 76%);
+        bottom: 0;
+        content: "";
+        height: 3px;
+        left: 0;
+        position: absolute;
+        right: 0;
+      }
+
+      .eyebrow,
+      h1,
+      .field-label,
+      button {
+        font-family: Poppins, Arial, sans-serif;
+      }
+
+      .eyebrow {
+        color: #e88810;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        margin: 0 0 6px;
+        text-transform: uppercase;
       }
 
       h1 {
-        font-size: 18px;
-        margin: 0 0 16px;
+        font-size: 24px;
+        letter-spacing: -0.025em;
+        line-height: 1.15;
+        margin: 0;
       }
 
-      label {
+      .subtitle {
+        color: #c4c0b8;
+        font-size: 12px;
+        line-height: 1.55;
+        margin: 8px 0 0;
+      }
+
+      form {
+        padding: 20px;
+      }
+
+      .field-label {
+        color: #e5dfd5;
         display: block;
-        font-size: 13px;
+        font-size: 12px;
         font-weight: 600;
-        margin-top: 12px;
+        margin: 0 0 7px;
+      }
+
+      .field + .field {
+        margin-top: 15px;
       }
 
       input[type="text"],
       input[type="password"] {
-        box-sizing: border-box;
-        margin-top: 5px;
-        padding: 8px;
+        background: #121416;
+        border: 1px solid #3b4045;
+        border-radius: 10px;
+        color: #fffaf2;
+        font: inherit;
+        outline: none;
+        padding: 11px 12px;
+        transition: border-color 150ms ease, box-shadow 150ms ease, background 150ms ease;
         width: 100%;
+      }
+
+      input::placeholder {
+        color: #777d82;
+      }
+
+      input[type="text"]:focus,
+      input[type="password"]:focus {
+        background: #171a1d;
+        border-color: #1a1d20;
+        box-shadow: 0 0 0 3px rgba(48, 56, 136, 0.28);
       }
 
       .option {
         align-items: center;
+        background: #202428;
+        border: 1px solid #383d42;
+        border-radius: 10px;
+        color: #c4c0b8;
+        cursor: pointer;
         display: flex;
-        font-weight: 400;
-        gap: 8px;
+        font-size: 12px;
+        gap: 9px;
+        margin-top: 17px;
+        padding: 10px 11px;
+      }
+
+      .option input {
+        accent-color: #1a1d20;
+        height: 15px;
+        margin: 0;
+        width: 15px;
       }
 
       button {
+        background: #e00020;
+        border: 1px solid #f02a46;
+        border-radius: 10px;
+        box-shadow: 0 8px 20px rgba(224, 0, 32, 0.24);
+        color: #ffffff;
         cursor: pointer;
+        font-size: 13px;
+        font-weight: 700;
         margin-top: 16px;
-        padding: 8px 12px;
+        padding: 11px 14px;
+        transition: background 150ms ease, box-shadow 150ms ease, transform 150ms ease;
         width: 100%;
       }
 
+      button:hover {
+        background: #f01032;
+        box-shadow: 0 11px 24px rgba(224, 0, 32, 0.34);
+        transform: translateY(-1px);
+      }
+
+      button:active {
+        transform: translateY(0);
+      }
+
       #status {
+        color: #e88810;
         font-size: 12px;
         min-height: 18px;
         margin: 10px 0 0;
+        text-align: center;
+      }
+
+      .privacy-note {
+        border-top: 1px solid #303438;
+        color: #92979b;
+        font-size: 11px;
+        line-height: 1.5;
+        margin: 0;
+        padding: 12px 20px 15px;
+        text-align: center;
       }
     </style>
   </head>
   <body>
-    <h1>Campus Wi-Fi Login</h1>
-    <form id="credentials-form">
-      <label for="matric">Matric No</label>
-      <input id="matric" name="matric" type="text" autocomplete="username" required>
+    <main class="card">
+      <header class="header">
+        <img class="brand-logo" src="icons/logo.svg" alt="Campus logo">
+        <div class="header-copy">
+          <p class="eyebrow">Campus Network</p>
+          <h1>Wi-Fi Auto Login</h1>
+          <p class="subtitle">Save your campus credentials for automatic portal sign-in.</p>
+        </div>
+      </header>
 
-      <label for="password">Password</label>
-      <input id="password" name="password" type="password" autocomplete="current-password" required>
+      <form id="credentials-form">
+        <div class="field">
+          <label class="field-label" for="matric">Matric No</label>
+          <input id="matric" name="matric" type="text" autocomplete="username" placeholder="Enter your matric number" required>
+        </div>
 
-      <label class="option" for="auto-login">
-        <input id="auto-login" name="autoLogin" type="checkbox" checked>
-        Log in automatically
-      </label>
+        <div class="field">
+          <label class="field-label" for="password">Password</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required>
+        </div>
 
-      <button type="submit">Save credentials</button>
-      <p id="status" role="status" aria-live="polite"></p>
-    </form>
+        <label class="option" for="auto-login">
+          <input id="auto-login" name="autoLogin" type="checkbox" checked>
+          Log in automatically when the portal opens
+        </label>
+
+        <button type="submit">Save credentials</button>
+        <p id="status" role="status" aria-live="polite"></p>
+      </form>
+
+      <p class="privacy-note">Credentials are stored locally in this Chrome profile.</p>
+    </main>
     <script src="popup.js"></script>
   </body>
 </html>
