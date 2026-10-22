@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "UMKWifi",
-  "version": "1.0.0",
+  "name": "UMKWifi by Yong",
+  "version": "1.0.2",
   "icons": 
   {
     "128": "icons/logo_128.png"
@@ -19,7 +19,7 @@
     "*://*/homepage/*"
   ],
   "action": {
-    "default_title": "Campus Wi-Fi Auto Login",
+    "default_title": "UMKWifi - Fill your information",
     "default_popup": "popup.html"
   },
   "content_scripts": [
