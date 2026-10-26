@@ -184,3 +184,8 @@
   observer.observe(document.documentElement, { childList: true, subtree: true });
   window.setTimeout(() => observer.disconnect(), FIELD_WAIT_TIMEOUT_MS);
 })();
+
+// Hi! I'm Yong
+// If you're reading this, it means you are trying to understand how this extension works. I hope you find it useful!
+// You can visit my website : https://yongjern.xyz for my information
+// Want contribute to this project? PM Me for information. I will be happy to have you on board!
