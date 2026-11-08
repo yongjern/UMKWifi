@@ -1,4 +1,7 @@
 <div align="center">
+<img src="./icons/logo.png" width="100" height="100">
+</div>
+<div align="center">
 <h1> UMKWifi · Auto-login wifi-extension </h1>
 </div>
 <div align="center">
@@ -6,7 +9,10 @@
 <img alt="GitHub Downloads (all assets, all releases)" src="https://img.shields.io/github/downloads/yongjern/UMKWifi/total?style=for-the-badge">
 <img alt="GitHub Tag" src="https://img.shields.io/github/v/tag/yongjern/UMKWifi?style=for-the-badge">
 </div>
-UMKWifi is a Manifest V3 Chrome extension that automatically fills in your credentials and submits the login form when a supported campus Wi-Fi portal opens.
+<div align="center">
+UMKWifi is a Manifest V3 Chrome extension that automatically fills in your credentials and submits the login form when a supported campus Wi-Fi portal opens. <br>
+Now, We are support <bold>UMK Kampus Kota, UMK Kolej Kediaman Tmn. Bendahara and UMK Kolej Kediaman Sri Kemumin.</bold>
+</div>
 
 ## Supported Login Pages
 
@@ -27,8 +33,11 @@ http://1.1.1.2/homepage/login.html
 http://10.255.255.1:8080/index.html
 ```
 
-## Installing from a GitHub Release
-
+## Installing 
+### Installing from Microsoft Edge Store
+*Note: Version 1.0.6 will be delay caused privacy page settings. Check [HERE](https://wifi.umk4u.tech/announcements/v1-0-6-delay) for more information*  
+*We will be released lasted version, which is V1.0.6 Version for all student in BETA Tester Phrase.*
+### Installing from Github Release.
 1. Open the project's **Releases** page on GitHub.
 2. Open the latest release and download its ZIP file from the **Assets** section.
 3. Extract the downloaded ZIP file to a permanent folder. Do not run the extension directly from inside the ZIP archive.
@@ -42,7 +51,7 @@ http://10.255.255.1:8080/index.html
 
 > Do not select the ZIP file, its parent folder, or only the `icons` folder. Select the extracted folder in which `manifest.json` is visible.
 
-## Installing from Source Code
+### Installing from Source Code
 
 1. Download the source code or clone the repository.
 2. Open `chrome://extensions` in Chrome or `edge://extensions` in Microsoft Edge.
@@ -64,7 +73,7 @@ http://10.255.255.1:8080/index.html
 
 Each time a supported login page is reloaded, the extension fills in the credentials again and makes one login attempt.
 
-## Disabling Automatic Login
+### For Disabling Automatic Login
 
 1. Click the extension icon to open its settings.
 2. Clear **Log in automatically when the portal opens**.
@@ -72,7 +81,7 @@ Each time a supported login page is reloaded, the extension fills in the credent
 
 Your credentials remain stored locally, but the extension will not submit the login form automatically.
 
-## Updating the Extension
+### For Updating the Extension
 
 After modifying the project files:
 
