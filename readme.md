@@ -1,5 +1,11 @@
-# UMKWifi
-
+<div align="center">
+<h1> UMKWifi · Auto-login wifi-extension </h1>
+</div>
+<div align="center">
+<img alt="Static Badge" src="https://img.shields.io/badge/Microsoft_Edge_Addons-V2?style=for-the-badge&logo=chromewebstore&logoColor=white">
+<img alt="GitHub Downloads (all assets, all releases)" src="https://img.shields.io/github/downloads/yongjern/UMKWifi/total?style=for-the-badge">
+<img alt="GitHub Tag" src="https://img.shields.io/github/v/tag/yongjern/UMKWifi?style=for-the-badge">
+</div>
 UMKWifi is a Manifest V3 Chrome extension that automatically fills in your credentials and submits the login form when a supported campus Wi-Fi portal opens.
 
 ## Supported Login Pages
